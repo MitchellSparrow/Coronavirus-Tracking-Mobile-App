@@ -1,8 +1,10 @@
-# coronatracker
+# Corona Tracking Flutter App
 
-A new Flutter project.
+The following app aims to create an user interface that can track the Covid-19 virus from an API.
 
-## Getting Started
+The API can be found [here](https://github.com/ExpDev07/coronavirus-tracker-api)
+
+## Getting Started with Flutter
 
 This project is a starting point for a Flutter application.
 
@@ -14,3 +16,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# License 
+
+The data is available to the public strictly for educational and academic research purposes. 
