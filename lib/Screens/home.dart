@@ -28,18 +28,53 @@ Future<Album> fetchAlbum() async {
   }
 }
 
+Future<TotalsAlbum> fetchTotalsAlbum() async {
+  final response = await http.get('https://corona.lmao.ninja/all');
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    print("Totals Data Loaded Successfully");
+    return TotalsAlbum.fromJson(convert.jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    print('Request failed with status: ${response.statusCode}.');
+    throw Exception('Failed to load album');
+  }
+}
+
+Future<CountryList> fetchCountryAlbum() async {
+  final response = await http.get('https://corona.lmao.ninja/countries');
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    print("Country List Data Loaded Successfully");
+    return CountryList.fromJson(convert.jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    print('Request failed with status: ${response.statusCode}.');
+    throw Exception('Failed to load album');
+  }
+}
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  bool loading = false;
   Future<Album> futureAlbum;
+  Future<TotalsAlbum> totalsAlbum;
+  Future<CountryList> countryAlbum;
   TextEditingController controller = new TextEditingController();
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    //futureAlbum = fetchAlbum();
+    totalsAlbum = fetchTotalsAlbum();
+    countryAlbum = fetchCountryAlbum();
   }
 
   @override
@@ -58,12 +93,13 @@ class _HomeState extends State<Home> {
               new Container(
                 color: Colors.white,
                 child: HomePageWidget(
-                  futureAblbum: futureAlbum,
+                  futureAblbum: totalsAlbum,
                 ),
               ),
               new Container(
+                //child: Text(countryAlbum.countryCases),
                 child: ListViewWidget(
-                  futureAblbum: futureAlbum,
+                  futureAblbum: countryAlbum,
                 ),
               ),
             ],
