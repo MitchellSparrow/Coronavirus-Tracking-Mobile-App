@@ -1,63 +1,22 @@
 import 'dart:async';
-import 'dart:convert' as convert;
-
+import 'package:coronatracker/models/album.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-Future<Album> fetchAlbum() async {
-  final response =
-      await http.get('https://coronavirus-tracker-api.herokuapp.com/confirmed');
-  print(response);
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    var jsonResponse = convert.jsonDecode(response.body);
-    var latestData = jsonResponse['latest'];
-    var locations = jsonResponse['locations'];
-    print("Data Loaded Successfully");
-    print(latestData);
-
-    return Album.fromJson(convert.jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    print('Request failed with status: ${response.statusCode}.');
-    throw Exception('Failed to load album');
-  }
-}
-
-class Album {
-  final int latest;
-  final String last_updated;
-  final List locations;
-
-  Album({this.latest, this.last_updated, this.locations});
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      latest: json['latest'],
-      last_updated: json['last_updated'],
-      locations: json['locations'],
-    );
-  }
-}
 
 class ListViewWidget extends StatefulWidget {
-  ListViewWidget({Key key}) : super(key: key);
+  Future<Album> futureAblbum;
+  ListViewWidget({this.futureAblbum});
 
   @override
   _ListViewWidgetState createState() => _ListViewWidgetState();
 }
 
 class _ListViewWidgetState extends State<ListViewWidget> {
-  Future<Album> futureAlbum;
   TextEditingController controller = new TextEditingController();
   String filter;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
     controller.addListener(() {
       setState(() {
         filter = controller.text;
@@ -70,29 +29,45 @@ class _ListViewWidgetState extends State<ListViewWidget> {
     return MaterialApp(
       title: 'Corona Statistics',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color.fromRGBO(0, 102, 102, 1),
+        accentColor: Color.fromRGBO(0, 204, 204, 1),
+        hintColor: Color.fromRGBO(0, 102, 102, 1),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Covid-19 Statistics'),
-        ),
         body: Center(
           child: FutureBuilder<Album>(
-            future: futureAlbum,
+            future: widget.futureAblbum,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                //return Text(snapshot.data.locations);
                 return Container(
-                  padding: new EdgeInsets.only(left: 20, right: 20),
+                  color: Colors.white,
+                  padding: new EdgeInsets.only(left: 20, right: 20, top: 80),
                   child: Column(
                     children: <Widget>[
                       new Padding(
-                        padding: new EdgeInsets.only(top: 10),
+                        padding: new EdgeInsets.only(top: 5),
                       ),
-                      new TextField(
-                        decoration: new InputDecoration(
-                            labelText: "Search for Country"),
-                        controller: controller,
+                      SizedBox(
+                        height: 70,
+                        child: Text(
+                          "Search",
+                          style: new TextStyle(
+                              fontFamily: 'Avenir',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 45,
+                              color: Color.fromRGBO(0, 102, 102, 1)),
+                        ),
+                      ),
+                      Container(
+                        padding:
+                            new EdgeInsets.only(left: 20, right: 20, top: 0),
+                        child: new TextField(
+                          decoration: new InputDecoration(
+                            fillColor: Colors.blue,
+                            labelText: "Search for Country",
+                          ),
+                          controller: controller,
+                        ),
                       ),
                       new Padding(
                         padding: new EdgeInsets.only(top: 10),
@@ -100,65 +75,68 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                       Expanded(
                         child: new Scaffold(
                           body: new ListView.builder(
-                            itemCount: snapshot.data.locations == null
+                            itemCount: snapshot.data.clocations == null
                                 ? 0
-                                : snapshot.data.locations.length,
+                                : snapshot.data.clocations.length,
                             itemBuilder: (BuildContext context, int index) {
                               return filter == null || filter == ""
                                   ? new Card(
-                                      color: Colors.white,
+                                      color: Color.fromRGBO(0, 122, 122, 1),
                                       shape: new RoundedRectangleBorder(
                                           borderRadius:
                                               new BorderRadius.circular(15.0),
-                                          side:
-                                              BorderSide(color: Colors.white)),
+                                          side: BorderSide(
+                                              color: Color.fromRGBO(
+                                                  0, 122, 122, 1))),
                                       margin: EdgeInsets.fromLTRB(5, 6, 5, 0),
                                       child: ListTile(
                                         title: Text(
-                                          "${snapshot.data.locations[index]["country"]} ${snapshot.data.locations[index]["province"]}",
+                                          "${snapshot.data.clocations[index]["country"]} ${snapshot.data.clocations[index]["province"]}",
                                           style: new TextStyle(
                                               fontFamily: 'Avenir',
                                               fontWeight: FontWeight.bold,
                                               fontSize: 20,
-                                              color: Colors.black),
+                                              color: Colors.white),
                                         ),
                                         subtitle: Text(
-                                          "Confirmed Cases:  ${snapshot.data.locations[index]["latest"]}",
+                                          "Confirmed:  ${snapshot.data.clocations[index]["latest"]}  Deaths:  ${snapshot.data.dlocations[index]["latest"]}  Recovered:  ${snapshot.data.rlocations[index]["latest"]}",
                                           style: new TextStyle(
                                               fontFamily: 'Avenir',
                                               fontWeight: FontWeight.normal,
-                                              fontSize: 15,
-                                              color: Colors.black),
+                                              fontSize: 12,
+                                              color: Colors.white),
                                         ),
                                       ),
                                     )
-                                  : snapshot.data.locations[index]["country"]
+                                  : snapshot.data.clocations[index]["country"]
                                           .contains(filter)
                                       ? new Card(
+                                          color: Color.fromRGBO(0, 102, 102, 1),
                                           shape: new RoundedRectangleBorder(
                                               borderRadius:
                                                   new BorderRadius.circular(
                                                       15.0),
                                               side: BorderSide(
-                                                  color: Colors.white)),
+                                                  color: Color.fromRGBO(
+                                                      0, 122, 122, 1))),
                                           margin:
                                               EdgeInsets.fromLTRB(5, 6, 5, 0),
                                           child: ListTile(
                                             title: Text(
-                                              "${snapshot.data.locations[index]["country"]} ${snapshot.data.locations[index]["province"]}",
+                                              "${snapshot.data.clocations[index]["country"]} ${snapshot.data.clocations[index]["province"]}",
                                               style: new TextStyle(
                                                   fontFamily: 'Avenir',
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20,
-                                                  color: Colors.black),
+                                                  color: Colors.white),
                                             ),
                                             subtitle: Text(
-                                              "Confirmed Cases:  ${snapshot.data.locations[index]["latest"]}",
+                                              "Confirmed:  ${snapshot.data.clocations[index]["latest"]}  Deaths:  ${snapshot.data.dlocations[index]["latest"]}  Recovered:  ${snapshot.data.rlocations[index]["latest"]}",
                                               style: new TextStyle(
                                                   fontFamily: 'Avenir',
                                                   fontWeight: FontWeight.normal,
-                                                  fontSize: 15,
-                                                  color: Colors.black),
+                                                  fontSize: 12,
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         )
