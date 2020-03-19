@@ -70,7 +70,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       title: 'Corona Statistics',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(0, 102, 102, 1),
-        accentColor: Color.fromRGBO(0, 204, 204, 1),
+        accentColor: Color.fromRGBO(0, 102, 102, 1),
         hintColor: Color.fromRGBO(0, 102, 102, 1),
       ),
       home: Material(

@@ -7,8 +7,8 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="coronatracker"
-        android:icon="@mipmap/ic_launcher">
+        android:label="C19 Tracker"
+        android:icon="@mipmap/not_icon_1">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

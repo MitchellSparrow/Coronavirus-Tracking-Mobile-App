@@ -28,10 +28,17 @@ dependencies:
   charts_flutter: ^0.9.0
   flutter_spinkit: "^4.1.1"
   keyboard_avoider: ^0.1.2
+  flutter_launcher_icons: "^0.7.3"
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+flutter_icons:
+  android: "not_icon_1" 
+  ios: true
+  image_path: "lib/images/coronaAppTrackerIcon.png" 
 
 
 # For information on the generic Dart part of this file, see the
@@ -49,6 +56,9 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+
+  assets:
+    - lib/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
