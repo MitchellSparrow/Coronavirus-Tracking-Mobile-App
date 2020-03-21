@@ -200,7 +200,7 @@ class _CountryScreenState extends State<CountryScreen>
                                       )),
                                   Expanded(flex: 1, child: SizedBox()),
                                   Expanded(
-                                    flex: 10,
+                                    flex: 11,
                                     child: Row(
                                       children: <Widget>[
                                         Expanded(flex: 1, child: SizedBox()),
@@ -297,7 +297,7 @@ class _CountryScreenState extends State<CountryScreen>
                                   ),
                                   Expanded(flex: 2, child: SizedBox()),
                                   Expanded(
-                                    flex: 10,
+                                    flex: 11,
                                     child: Row(
                                       children: <Widget>[
                                         Expanded(flex: 1, child: SizedBox()),

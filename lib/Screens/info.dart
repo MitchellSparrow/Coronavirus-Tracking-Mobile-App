@@ -34,83 +34,101 @@ class InfoScreen extends StatelessWidget {
             flex: 12,
             child: Column(
               children: <Widget>[
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Wash your hands for at least 20 seconds',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Try not to touch your face',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Keep your distance from others',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Do not shake hands whith others',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Only go to public places when absolutly neccessary',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Work from home',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
-                ListTile(
-                    leading: new MyBullet(),
-                    title: Text(
-                      'Keep hand sanitizor with you at all times and use it constantly - especially in public situations',
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(
-                          fontFamily: 'Avenir',
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          color: Colors.black),
-                    )),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Wash your hands for at least 20 seconds',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Try not to touch your face',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Keep your distance from others',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Do not shake hands whith others',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Only go to public places when absolutly neccessary',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Work from home',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  child: ListTile(
+                      leading: new MyBullet(),
+                      title: Text(
+                        'Keep hand sanitizor with you at all times',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontFamily: 'Avenir',
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.black),
+                      )),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
               ],
             ),
           ),
