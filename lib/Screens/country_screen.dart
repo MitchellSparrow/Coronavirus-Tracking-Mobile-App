@@ -62,18 +62,18 @@ class _CountryScreenState extends State<CountryScreen>
     var pieData1 = [
       new Task(
           "Cases: ${confirmed}", confirmed, Color.fromRGBO(0, 102, 102, 1)),
-      new Task("Deaths ${deaths}", deaths, Color.fromRGBO(0, 184, 184, 1)),
+      new Task("Deaths: ${deaths}", deaths, Color.fromRGBO(0, 184, 184, 1)),
       new Task(
-          "Recovered ${recovered}", recovered, Color.fromRGBO(0, 234, 234, 1)),
+          "Recovered: ${recovered}", recovered, Color.fromRGBO(0, 234, 234, 1)),
     ];
 
     var pieData2 = [
       new Task(
-          "Cases ${todayCases}", todayCases, Color.fromRGBO(0, 102, 102, 1)),
+          "Cases: ${todayCases}", todayCases, Color.fromRGBO(0, 102, 102, 1)),
+      new Task("Deaths: ${todayDeaths}", todayDeaths,
+          Color.fromRGBO(0, 184, 184, 1)),
       new Task(
-          "Deaths ${todayDeaths}", todayDeaths, Color.fromRGBO(0, 184, 184, 1)),
-      new Task(
-          "Critical ${critical}", critical, Color.fromRGBO(0, 234, 234, 1)),
+          "Critical: ${critical}", critical, Color.fromRGBO(0, 234, 234, 1)),
     ];
 
     _seriesPieData1.add(
@@ -227,7 +227,7 @@ class _CountryScreenState extends State<CountryScreen>
                                               Expanded(
                                                   flex: 2,
                                                   child: Text(
-                                                    "Recoveries/Cases:\n${((snapshot.data.countries[widget.index].countryRecoveries / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %\n\n\nDeaths/Cases:\n${((snapshot.data.countries[widget.index].countryDeaths / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %",
+                                                    "Recoveries/Total Cases:\n${((snapshot.data.countries[widget.index].countryRecoveries / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %\n\n\nDeaths/Total Cases:\n${((snapshot.data.countries[widget.index].countryDeaths / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %",
                                                     style: new TextStyle(
                                                         fontFamily: 'Avenir',
                                                         fontWeight:
@@ -324,7 +324,7 @@ class _CountryScreenState extends State<CountryScreen>
                                               Expanded(
                                                   flex: 2,
                                                   child: Text(
-                                                    "Today Cases/Total Cases:\n${((snapshot.data.countries[widget.index].countryTodayCases / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %\n\n\nCritical/Total Cases:\n${((snapshot.data.countries[widget.index].countryCritical / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %",
+                                                    "Today's Cases/Total Cases:\n${((snapshot.data.countries[widget.index].countryTodayCases / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %\n\n\nCritical/Total Cases:\n${((snapshot.data.countries[widget.index].countryCritical / snapshot.data.countries[widget.index].countryCases) * 100).toStringAsFixed(2)} %",
                                                     style: new TextStyle(
                                                         fontFamily: 'Avenir',
                                                         fontWeight:

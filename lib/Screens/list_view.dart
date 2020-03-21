@@ -175,34 +175,114 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                     margin: EdgeInsets.fromLTRB(
                                                         5, 6, 5, 0),
                                                     child: ListTile(
-                                                      title: Text(
-                                                        "${snapshot.data.countries[index].country}",
-                                                        style: new TextStyle(
-                                                            fontFamily:
-                                                                'Avenir',
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: SizeConfig
-                                                                    .safeBlockHorizontal *
-                                                                5.5,
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                      subtitle: Text(
-                                                        "\nOverall:   Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}\nToday:     Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
-                                                        style: new TextStyle(
-                                                            fontFamily:
-                                                                'Avenir',
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            fontSize: SizeConfig
-                                                                    .safeBlockHorizontal *
-                                                                2.7,
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ),
+                                                        title: Text(
+                                                          "${snapshot.data.countries[index].country}",
+                                                          style: new TextStyle(
+                                                              fontFamily:
+                                                                  'Avenir',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: SizeConfig
+                                                                      .safeBlockHorizontal *
+                                                                  5.5,
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        subtitle: Column(
+                                                          children: <Widget>[
+                                                            Expanded(
+                                                                flex: 2,
+                                                                child:
+                                                                    SizedBox()),
+                                                            Expanded(
+                                                              flex: 10,
+                                                              child: Container(
+                                                                width: SizeConfig
+                                                                        .safeBlockHorizontal *
+                                                                    80,
+                                                                child:
+                                                                    new RichText(
+                                                                  text: new TextSpan(
+                                                                      style: new TextStyle(
+                                                                        fontSize:
+                                                                            SizeConfig.safeBlockHorizontal *
+                                                                                2.7,
+                                                                        color: Colors
+                                                                            .white,
+                                                                      ),
+                                                                      children: <TextSpan>[
+                                                                        new TextSpan(
+                                                                          text:
+                                                                              "\nOverall:",
+                                                                          style: new TextStyle(
+                                                                              fontFamily: 'Avenir',
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: SizeConfig.safeBlockHorizontal * 2.7,
+                                                                              color: Colors.white),
+                                                                        ),
+                                                                        new TextSpan(
+                                                                          text:
+                                                                              "  Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}",
+                                                                          style: new TextStyle(
+                                                                              fontFamily: 'Avenir',
+                                                                              fontWeight: FontWeight.normal,
+                                                                              fontSize: SizeConfig.safeBlockHorizontal * 2.7,
+                                                                              color: Colors.white),
+                                                                        )
+                                                                      ]),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                                flex: 1,
+                                                                child:
+                                                                    SizedBox()),
+                                                            Expanded(
+                                                              flex: 10,
+                                                              child: Container(
+                                                                width: SizeConfig
+                                                                        .safeBlockHorizontal *
+                                                                    80,
+                                                                child:
+                                                                    new RichText(
+                                                                  text: new TextSpan(
+                                                                      style: new TextStyle(
+                                                                        fontSize:
+                                                                            SizeConfig.safeBlockHorizontal *
+                                                                                2.7,
+                                                                        color: Colors
+                                                                            .white,
+                                                                      ),
+                                                                      children: <TextSpan>[
+                                                                        new TextSpan(
+                                                                          text:
+                                                                              "\Today:",
+                                                                          style: new TextStyle(
+                                                                              fontFamily: 'Avenir',
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: SizeConfig.safeBlockHorizontal * 2.7,
+                                                                              color: Colors.white),
+                                                                        ),
+                                                                        new TextSpan(
+                                                                          text:
+                                                                              "  Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
+                                                                          style: new TextStyle(
+                                                                              fontFamily: 'Avenir',
+                                                                              fontWeight: FontWeight.normal,
+                                                                              fontSize: SizeConfig.safeBlockHorizontal * 2.7,
+                                                                              color: Colors.white),
+                                                                        )
+                                                                      ]),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                                flex: 10,
+                                                                child:
+                                                                    SizedBox()),
+                                                          ],
+                                                        )),
                                                   ),
                                                 ),
                                               )
@@ -249,35 +329,96 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                             EdgeInsets.fromLTRB(
                                                                 5, 6, 5, 0),
                                                         child: ListTile(
-                                                          title: Text(
-                                                            "${snapshot.data.countries[index].country}",
-                                                            style: new TextStyle(
-                                                                fontFamily:
-                                                                    'Avenir',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: SizeConfig
-                                                                        .safeBlockHorizontal *
-                                                                    5.5,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                          subtitle: Text(
-                                                            "\nOverall:   Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}\nToday:     Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
-                                                            style: new TextStyle(
-                                                                fontFamily:
-                                                                    'Avenir',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                fontSize: SizeConfig
-                                                                        .safeBlockHorizontal *
-                                                                    2.8,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        ),
+                                                            title: Text(
+                                                              "${snapshot.data.countries[index].country}",
+                                                              style: new TextStyle(
+                                                                  fontFamily:
+                                                                      'Avenir',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      SizeConfig
+                                                                              .safeBlockHorizontal *
+                                                                          5.5,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                            subtitle: Column(
+                                                              children: <
+                                                                  Widget>[
+                                                                Expanded(
+                                                                    flex: 2,
+                                                                    child:
+                                                                        SizedBox()),
+                                                                Expanded(
+                                                                  flex: 10,
+                                                                  child:
+                                                                      Container(
+                                                                    width: SizeConfig
+                                                                            .safeBlockHorizontal *
+                                                                        80,
+                                                                    child:
+                                                                        new RichText(
+                                                                      text: new TextSpan(
+                                                                          style: new TextStyle(
+                                                                            fontSize:
+                                                                                SizeConfig.safeBlockHorizontal * 2.7,
+                                                                            color:
+                                                                                Colors.white,
+                                                                          ),
+                                                                          children: <TextSpan>[
+                                                                            new TextSpan(
+                                                                              text: "\nOverall:",
+                                                                              style: new TextStyle(fontFamily: 'Avenir', fontWeight: FontWeight.bold, fontSize: SizeConfig.safeBlockHorizontal * 2.7, color: Colors.white),
+                                                                            ),
+                                                                            new TextSpan(
+                                                                              text: "  Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}",
+                                                                              style: new TextStyle(fontFamily: 'Avenir', fontWeight: FontWeight.normal, fontSize: SizeConfig.safeBlockHorizontal * 2.7, color: Colors.white),
+                                                                            )
+                                                                          ]),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                    flex: 1,
+                                                                    child:
+                                                                        SizedBox()),
+                                                                Expanded(
+                                                                  flex: 10,
+                                                                  child:
+                                                                      Container(
+                                                                    width: SizeConfig
+                                                                            .safeBlockHorizontal *
+                                                                        80,
+                                                                    child:
+                                                                        new RichText(
+                                                                      text: new TextSpan(
+                                                                          style: new TextStyle(
+                                                                            fontSize:
+                                                                                SizeConfig.safeBlockHorizontal * 2.7,
+                                                                            color:
+                                                                                Colors.white,
+                                                                          ),
+                                                                          children: <TextSpan>[
+                                                                            new TextSpan(
+                                                                              text: "\Today:",
+                                                                              style: new TextStyle(fontFamily: 'Avenir', fontWeight: FontWeight.bold, fontSize: SizeConfig.safeBlockHorizontal * 2.7, color: Colors.white),
+                                                                            ),
+                                                                            new TextSpan(
+                                                                              text: "  Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
+                                                                              style: new TextStyle(fontFamily: 'Avenir', fontWeight: FontWeight.normal, fontSize: SizeConfig.safeBlockHorizontal * 2.7, color: Colors.white),
+                                                                            )
+                                                                          ]),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                    flex: 10,
+                                                                    child:
+                                                                        SizedBox()),
+                                                              ],
+                                                            )),
                                                       ),
                                                     ),
                                                   )
