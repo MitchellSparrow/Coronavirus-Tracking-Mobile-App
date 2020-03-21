@@ -38,7 +38,7 @@ dev_dependencies:
 flutter_icons:
   android: "not_icon_1" 
   ios: true
-  image_path: "lib/images/coronaAppTrackerIcon.png" 
+  image_path: "lib/images/coronaAppTrackerIcon2.png" 
 
 
 # For information on the generic Dart part of this file, see the

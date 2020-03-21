@@ -1,10 +1,13 @@
 import 'package:coronatracker/Screens/home_page.dart';
+import 'package:coronatracker/Screens/info.dart';
 import 'package:coronatracker/Screens/list_view.dart';
 import 'package:coronatracker/models/album.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert' as convert;
+
+import 'country_screen.dart';
 
 Future<Album> fetchAlbum() async {
   final response =
@@ -85,7 +88,7 @@ class _HomeState extends State<Home> {
       ),
       color: Colors.yellow,
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: new Scaffold(
           extendBodyBehindAppBar: true,
           body: TabBarView(
@@ -102,6 +105,10 @@ class _HomeState extends State<Home> {
                   futureAblbum: countryAlbum,
                 ),
               ),
+              new Container(
+                //child: Text(countryAlbum.countryCases),
+                child: InfoScreen(),
+              ),
             ],
           ),
           bottomNavigationBar: new TabBar(
@@ -111,6 +118,9 @@ class _HomeState extends State<Home> {
                 ),
                 Tab(
                   icon: new Icon(Icons.search),
+                ),
+                Tab(
+                  icon: new Icon(Icons.info),
                 ),
               ],
               labelColor: Color.fromRGBO(0, 102, 102, 1),

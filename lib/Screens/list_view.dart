@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:coronatracker/Screens/country_screen.dart';
 import 'package:coronatracker/models/album.dart';
+import 'package:coronatracker/models/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -66,6 +68,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return MaterialApp(
       title: 'Corona Statistics',
       theme: ThemeData(
@@ -86,27 +89,32 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                       ? Loading()
                       : Container(
                           color: Colors.white,
-                          padding:
-                              new EdgeInsets.only(left: 20, right: 20, top: 80),
+                          padding: new EdgeInsets.only(
+                              left: SizeConfig.safeBlockHorizontal * 6,
+                              right: SizeConfig.safeBlockHorizontal * 6,
+                              top: SizeConfig.safeBlockVertical * 11),
                           child: Column(
                             children: <Widget>[
                               new Padding(
                                 padding: new EdgeInsets.only(top: 5),
                               ),
                               SizedBox(
-                                height: 70,
+                                height: SizeConfig.safeBlockVertical * 11,
                                 child: Text(
                                   "Search",
                                   style: new TextStyle(
                                       fontFamily: 'Avenir',
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 45,
+                                      fontSize:
+                                          SizeConfig.safeBlockHorizontal * 11,
                                       color: Color.fromRGBO(0, 102, 102, 1)),
                                 ),
                               ),
                               Container(
                                 padding: new EdgeInsets.only(
-                                    left: 20, right: 20, top: 0),
+                                    left: SizeConfig.safeBlockHorizontal * 5,
+                                    right: SizeConfig.safeBlockHorizontal * 5,
+                                    top: 0),
                                 child: new TextField(
                                   decoration: new InputDecoration(
                                     fillColor: Colors.blue,
@@ -116,7 +124,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                 ),
                               ),
                               new Padding(
-                                padding: new EdgeInsets.only(top: 10),
+                                padding: new EdgeInsets.only(
+                                    top: SizeConfig.safeBlockVertical * 0.8),
                               ),
                               Expanded(
                                 child: new Scaffold(
@@ -131,43 +140,68 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                           (BuildContext context, int index) {
                                         return filter == null || filter == ""
                                             ? Container(
-                                                height: 90,
-                                                child: new Card(
-                                                  color: Color.fromRGBO(
-                                                      0, 122, 122, 1),
-                                                  shape:
-                                                      new RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              new BorderRadius
-                                                                      .circular(
-                                                                  15.0),
-                                                          side: BorderSide(
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      0,
-                                                                      122,
-                                                                      122,
-                                                                      1))),
-                                                  margin: EdgeInsets.fromLTRB(
-                                                      5, 6, 5, 0),
-                                                  child: ListTile(
-                                                    title: Text(
-                                                      "${snapshot.data.countries[index].country}",
-                                                      style: new TextStyle(
-                                                          fontFamily: 'Avenir',
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 20,
-                                                          color: Colors.white),
-                                                    ),
-                                                    subtitle: Text(
-                                                      "\nOverall:   Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}\nToday:     Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
-                                                      style: new TextStyle(
-                                                          fontFamily: 'Avenir',
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          fontSize: 11,
-                                                          color: Colors.white),
+                                                height: SizeConfig
+                                                        .safeBlockVertical *
+                                                    15,
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              CountryScreen(
+                                                                futureAblbum: widget
+                                                                    .futureAblbum,
+                                                                index: index,
+                                                              )),
+                                                    );
+                                                  },
+                                                  child: new Card(
+                                                    color: Color.fromRGBO(
+                                                        0, 122, 122, 1),
+                                                    shape:
+                                                        new RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                new BorderRadius
+                                                                        .circular(
+                                                                    15.0),
+                                                            side: BorderSide(
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        0,
+                                                                        122,
+                                                                        122,
+                                                                        1))),
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        5, 6, 5, 0),
+                                                    child: ListTile(
+                                                      title: Text(
+                                                        "${snapshot.data.countries[index].country}",
+                                                        style: new TextStyle(
+                                                            fontFamily:
+                                                                'Avenir',
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: SizeConfig
+                                                                    .safeBlockHorizontal *
+                                                                5.5,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      subtitle: Text(
+                                                        "\nOverall:   Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}\nToday:     Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
+                                                        style: new TextStyle(
+                                                            fontFamily:
+                                                                'Avenir',
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontSize: SizeConfig
+                                                                    .safeBlockHorizontal *
+                                                                2.7,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -178,49 +212,71 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                     .contains(
                                                         filter.toLowerCase())
                                                 ? Container(
-                                                    height: 90,
-                                                    child: new Card(
-                                                      color: Color.fromRGBO(
-                                                          0, 122, 122, 1),
-                                                      shape: new RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              new BorderRadius
-                                                                      .circular(
-                                                                  15.0),
-                                                          side: BorderSide(
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      0,
-                                                                      122,
-                                                                      122,
-                                                                      1))),
-                                                      margin:
-                                                          EdgeInsets.fromLTRB(
-                                                              5, 6, 5, 0),
-                                                      child: ListTile(
-                                                        title: Text(
-                                                          "${snapshot.data.countries[index].country}",
-                                                          style: new TextStyle(
-                                                              fontFamily:
-                                                                  'Avenir',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 20,
-                                                              color:
-                                                                  Colors.white),
-                                                        ),
-                                                        subtitle: Text(
-                                                          "\nOverall:   Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}\nToday:     Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
-                                                          style: new TextStyle(
-                                                              fontFamily:
-                                                                  'Avenir',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                              fontSize: 11,
-                                                              color:
-                                                                  Colors.white),
+                                                    height: SizeConfig
+                                                            .safeBlockVertical *
+                                                        15,
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  CountryScreen(
+                                                                    futureAblbum:
+                                                                        widget
+                                                                            .futureAblbum,
+                                                                    index:
+                                                                        index,
+                                                                  )),
+                                                        );
+                                                      },
+                                                      child: new Card(
+                                                        color: Color.fromRGBO(
+                                                            0, 122, 122, 1),
+                                                        shape: new RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                new BorderRadius
+                                                                        .circular(
+                                                                    15.0),
+                                                            side: BorderSide(
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        0,
+                                                                        122,
+                                                                        122,
+                                                                        1))),
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                5, 6, 5, 0),
+                                                        child: ListTile(
+                                                          title: Text(
+                                                            "${snapshot.data.countries[index].country}",
+                                                            style: new TextStyle(
+                                                                fontFamily:
+                                                                    'Avenir',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: SizeConfig
+                                                                        .safeBlockHorizontal *
+                                                                    5.5,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                          subtitle: Text(
+                                                            "\nOverall:   Cases:  ${snapshot.data.countries[index].countryCases}  Deaths:  ${snapshot.data.countries[index].countryDeaths}  Recovered:  ${snapshot.data.countries[index].countryRecoveries}\nToday:     Cases:  ${snapshot.data.countries[index].countryTodayCases}  Deaths:  ${snapshot.data.countries[index].countryTodayDeaths}   Critical:  ${snapshot.data.countries[index].countryCritical}",
+                                                            style: new TextStyle(
+                                                                fontFamily:
+                                                                    'Avenir',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                fontSize: SizeConfig
+                                                                        .safeBlockHorizontal *
+                                                                    2.8,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -245,44 +301,58 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                       child: Container(
                         height: MediaQuery.of(context).size.height - 50,
                         color: Colors.white,
-                        padding:
-                            new EdgeInsets.only(left: 20, right: 20, top: 80),
+                        padding: new EdgeInsets.only(
+                            left: SizeConfig.safeBlockHorizontal * 6,
+                            right: SizeConfig.safeBlockHorizontal * 6,
+                            top: SizeConfig.safeBlockVertical * 11),
                         child: Column(
                           children: <Widget>[
                             new Padding(
                               padding: new EdgeInsets.only(top: 5),
                             ),
                             SizedBox(
-                              height: 70,
+                              height: SizeConfig.safeBlockVertical * 11,
                               child: Text(
                                 "Search",
                                 style: new TextStyle(
                                     fontFamily: 'Avenir',
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 45,
+                                    fontSize:
+                                        SizeConfig.safeBlockHorizontal * 11,
                                     color: Color.fromRGBO(0, 102, 102, 1)),
                               ),
                             ),
                             Container(
                               padding: new EdgeInsets.only(
-                                  left: 20, right: 20, top: 0),
+                                  left: SizeConfig.safeBlockHorizontal * 5,
+                                  right: SizeConfig.safeBlockHorizontal * 5,
+                                  top: 0),
                             ),
                             new Padding(
-                              padding: new EdgeInsets.only(top: 10),
+                              padding: new EdgeInsets.only(
+                                top: SizeConfig.safeBlockVertical * 1,
+                                right: SizeConfig.safeBlockHorizontal * 6,
+                                left: SizeConfig.safeBlockHorizontal * 6,
+                              ),
                             ),
                             Expanded(
                               child: new Scaffold(
                                 body: Container(
                                   padding: new EdgeInsets.only(
-                                      left: 20, right: 20, top: 30),
+                                    left: SizeConfig.safeBlockHorizontal * 5,
+                                    right: SizeConfig.safeBlockHorizontal * 5,
+                                    top: SizeConfig.safeBlockVertical * 5,
+                                  ),
                                   child: Center(
                                     child: Text(
-                                      "Error while loading data\n\n\nPlease try again",
+                                      "Error while loading data\n\n\nPlease try again later",
                                       textAlign: TextAlign.center,
                                       style: new TextStyle(
                                           fontFamily: 'Avenir',
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 20,
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  5,
                                           color: Colors.black),
                                     ),
                                   ),
