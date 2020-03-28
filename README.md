@@ -4,6 +4,8 @@ The following app aims to create an user interface that can track the Covid-19 v
 
 The API can be found [here](https://github.com/ExpDev07/coronavirus-tracker-api)
 
+The API collects data from Worldometers which can be found [here](https://www.worldometers.info/coronavirus/)
+
 ## Getting Started with Flutter
 
 This project is a starting point for a Flutter application.

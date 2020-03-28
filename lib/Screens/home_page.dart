@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 import 'disclaimer.dart';
+import 'home_page_error.dart';
 import 'loading.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -33,7 +34,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
-      // then parse the JSON.
+      // then parse the JSON, and print the data was loaded successfully to console
       print("Totals Data Loaded Successfully");
       return TotalsAlbum.fromJson(convert.jsonDecode(response.body));
     } else {
@@ -401,193 +402,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       onRefresh: refreshList,
                       child: SingleChildScrollView(
                         physics: AlwaysScrollableScrollPhysics(),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height - 50,
-                          padding: EdgeInsets.only(top: 0, left: 0, right: 0),
-                          color: Colors.white,
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(
-                                  height: SizeConfig.safeBlockVertical * 35,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                            begin: Alignment.topLeft,
-                                            end: Alignment.bottomRight,
-                                            colors: [
-                                              Color.fromRGBO(0, 102, 102, 1),
-                                              Color.fromRGBO(0, 204, 204, 1),
-                                            ]),
-                                        borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(60),
-                                            bottomRight: Radius.circular(60)),
-                                        border: Border.all(
-                                            color: Colors.white, width: 0)),
-                                    child: Column(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height:
-                                              SizeConfig.safeBlockVertical * 8,
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              SizeConfig.safeBlockVertical * 12,
-                                          child: Text(
-                                            "COVID-19",
-                                            style: new TextStyle(
-                                                fontFamily: 'Avenir',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: SizeConfig
-                                                        .safeBlockHorizontal *
-                                                    11,
-                                                color: Colors.white),
-                                          ),
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Container(
-                                              width: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  58,
-                                              padding: EdgeInsets.only(
-                                                left: SizeConfig
-                                                        .safeBlockHorizontal *
-                                                    14,
-                                              ),
-                                              child: Text(
-                                                "Cases:",
-                                                style: new TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        6.5,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.only(left: 0),
-                                              child: Text(
-                                                "---",
-                                                style: new TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        6.5,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Container(
-                                              width: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  58,
-                                              padding: EdgeInsets.only(
-                                                left: SizeConfig
-                                                        .safeBlockHorizontal *
-                                                    14,
-                                              ),
-                                              child: Text(
-                                                "Deaths:",
-                                                style: new TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        6.5,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.only(left: 0),
-                                              child: Text(
-                                                "---",
-                                                style: new TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        6.5,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Container(
-                                              width: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  58,
-                                              padding: EdgeInsets.only(
-                                                left: SizeConfig
-                                                        .safeBlockHorizontal *
-                                                    14,
-                                              ),
-                                              child: Text(
-                                                "Recovered:",
-                                                style: new TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        6.5,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.only(left: 0),
-                                              child: Text(
-                                                "---",
-                                                style: new TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        6.5,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  )),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              Expanded(
-                                flex: 20,
-                                child: new Scaffold(
-                                  body: Container(
-                                    padding: new EdgeInsets.only(
-                                      left: SizeConfig.safeBlockHorizontal * 5,
-                                      right: SizeConfig.safeBlockHorizontal * 5,
-                                      top: SizeConfig.safeBlockVertical * 5,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "Error while loading data\n\n\nPlease try again later",
-                                        textAlign: TextAlign.center,
-                                        style: new TextStyle(
-                                            fontFamily: 'Avenir',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize:
-                                                SizeConfig.safeBlockHorizontal *
-                                                    5,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        child: HomePageError(),
                       ),
                     );
                   } else {

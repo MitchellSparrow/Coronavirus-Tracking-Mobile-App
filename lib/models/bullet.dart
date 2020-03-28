@@ -1,6 +1,10 @@
 import 'package:coronatracker/models/size_config.dart';
 import 'package:flutter/material.dart';
 
+///The following class describes a widget made for a
+///bullet point. this is just the circle of the point
+///and not the whole point including text.
+
 class MyBullet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

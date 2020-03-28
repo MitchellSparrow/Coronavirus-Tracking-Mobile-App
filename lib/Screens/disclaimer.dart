@@ -1,6 +1,11 @@
 import 'package:coronatracker/models/size_config.dart';
 import 'package:flutter/material.dart';
 
+///The following widget is used as a popup on the home page
+///for a disclaimer. This is important as it notifies the user
+///that the information provided may be incorrect as a specific
+///point in time
+
 class DisclaimerBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,12 @@ class DisclaimerBottomSheet extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 35),
           child: Center(
             child: Text(
-              "The following app connects to the public REST API:https://corona.lmao.ninja/ Which collects data from: https://www.worldometers.info/coronavirus/\n\nThis app is therefore a graphical represention of the data and does not create the data itself. The statistics provided by the API seem accurate, however may be incorrect at a specific point in time.\n\nThe goal of the app is to provide AWARENESS and INFORMATION of the spreading Coronavirus, NOT to spread Fake News.",
+              '''The following app connects to the public REST API:https://corona.lmao.ninja/ 
+              Which collects data from: https://www.worldometers.info/coronavirus/\n\n
+              This app is therefore a graphical represention of the data and does not create the data itself. 
+              The statistics provided by the API seem accurate, however may be incorrect at a specific point in time.\n\n
+              The goal of the app is to provide AWARENESS and INFORMATION of the spreading Coronavirus, 
+              NOT to spread Fake News.''',
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontFamily: 'Avenir',
