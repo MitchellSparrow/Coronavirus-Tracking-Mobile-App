@@ -1,8 +1,13 @@
 # Corona Tracking Flutter App
 
+The Covid-19 Application is a cross platform mobile application developed using Flutter. The application allows users to quickly and easily determine the latest global and national statistics of the Coronavirus from a user friendly graphical interface. The home page provides overall statistics, while the second page allows users to search and open individual country statistics. An information page was also added to provide suggestions and tips as to how to stop the virus from spreading.
+
 ![alt text](https://i.imgur.com/TVx9XGF.png)
 
-The following app aims to create an user interface that can track the Covid-19 virus from an API.
+
+At the time, I had noticed that although there were Coronavirus website trackers, there were no mobile applications on the Google Play or App Store and so I thought I would creat one. Unfortunately, I was to later find out that both the Apple App Store as well as the Google Play Store were blocking almost all applications to do with Covid-19 as the pandemic was becoming very serious and they could not verify any of the statistics or API's. 
+
+## API Details
 
 The API can be found [here](https://github.com/ExpDev07/coronavirus-tracker-api)
 
